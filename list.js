@@ -35,19 +35,27 @@ function Recherche() {
     }
 
     if (trouve === false) {
-        console.log("Pas trouvé");
+        console.log("Tâche non trouvée");
     }
 }
-function Supprimer(){
-    for(i=0;i<tab.length;i++){
-        let id=Number(p("entrer l'id de tache que voux voulez supprimer :"))
-        if(tab[i].id===id){
-            tab.pop(id);
-            console.log('la tache est supprimer avec succé');
+function Supprimer() {
+    let id = Number(p("Entrer l'id de la tâche à supprimer : "));
+    let trouve = false;
+
+    for (let i = 0; i < tab.length; i++) {
+        if (tab[i].id === id) {
+            tab.splice(i, 1);
+            console.log("La tâche est supprimée avec succès");
+            trouve = true;
+            break;
         }
     }
-    console.table(tab);
+
+    if (!trouve) {
+        console.log("Tâche introuvable");
+    }
 }
+
 function Statut() {
     let choix = p("1: tâches terminées | 2: tâches en attente : ");
 
